@@ -4771,3 +4771,39 @@ details p {
         padding: 16px;
     }
 }
+
+
+.s2-note {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+}
+
+.s2-note__mascot {
+    grid-column: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.s2-note__content {
+    grid-column: 2;
+    min-width: 0;
+}
+
+.s2-note__content > strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.s2-note__content > p {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .s2-note {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 12px;
+    }
+}
