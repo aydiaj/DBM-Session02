@@ -4839,3 +4839,33 @@ details p {
 #homework ol>li {
     margin-bottom: 12px;
 }
+
+.s2-pdf-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px;
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: #0877b6;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.s2-pdf-download:hover {
+    background: #075d91;
+    color: #fff;
+    text-decoration: none;
+}
+
+.s2-pdf-download:focus-visible {
+    outline: 3px solid #08a6b5;
+    outline-offset: 3px;
+}
