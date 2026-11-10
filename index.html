@@ -92,10 +92,17 @@
                         </div><span class="duration">6 QUESTIONS</span>
                     </div>
                     <p class="intro-line">Start with what you already know from Session 01 and your SQL course.</p>
-                    <div class="s2-note"><strong>Choose first. Then explain one answer.</strong>
-                        <p>Answer independently before opening a hint. Check each answer for immediate feedback, then
-                            discuss one choice with a classmate or in the class chat. This is a diagnostic activity; it
-                            carries no formal marks and does not lock the lesson.</p>
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>Choose first. Then explain one answer.</strong>
+                            <p>Answer independently before opening a hint. Check each answer for immediate feedback,
+                                then
+                                discuss one choice with a classmate or in the class chat. This is a diagnostic activity;
+                                it
+                                carries no formal marks and does not lock the lesson.</p>
+
+                        </div>
                     </div>
                     <div id="warmupQuiz"></div>
                     <div class="quiz-summary">
@@ -162,10 +169,17 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="s2-note"><strong>Same principle, different categories</strong>
-                        <p>Use the appropriate API for the task. HttpClient and File are not SQL data providers, and not
-                            every API needs an external NuGet package.</p>
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>Same principle, different categories</strong>
+                            <p>Use the appropriate API for the task. HttpClient and File are not SQL data providers, and
+                                not
+                                every API needs an external NuGet package.</p>
+
+                        </div>
                     </div>
+
                     <div class="s2-card">
                         <h2>Check the route</h2>
                         <p>Choose a tool for each task, then explain why it fits.</p>
@@ -314,35 +328,44 @@ FROM dbo.Students;</code></pre>
                         </div>
 
                         <div class="s2-note">
-                            <strong>Preparing is different from opening</strong>
+                            <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                            <div class="s2-note__content">
+                                <strong>Preparing is different from opening</strong>
 
-                            <p>
-                                Writing a connection string prepares the settings.
-                                Creating a <code>SqlConnection</code> creates an object
-                                that holds those settings.
-                                Calling <code>OpenAsync()</code> attempts to establish
-                                the actual database connection.
-                            </p>
+                                <p>
+                                    Writing a connection string prepares the settings.
+                                    Creating a <code>SqlConnection</code> creates an object
+                                    that holds those settings.
+                                    Calling <code>OpenAsync()</code> attempts to establish
+                                    the actual database connection.
+                                </p>
 
-                            <p>
-                                Similarly, creating a <code>SqlCommand</code> prepares
-                                an instruction. Calling an execution method, such as
-                                <code>ExecuteScalarAsync()</code>, sends it for execution.
-                            </p>
+                                <p>
+                                    Similarly, creating a <code>SqlCommand</code> prepares
+                                    an instruction. Calling an execution method, such as
+                                    <code>ExecuteScalarAsync()</code>, sends it for execution.
+                                </p>
+                            </div>
                         </div>
+
+
                     </div>
 
 
+
                     <div class="s2-note">
-                        <strong>One keyword, two different uses: using</strong>
-                        <p>
-                            <code>using Microsoft.Data.SqlClient;</code> lets us access classes
-                            from that namespace without writing their full names.
-                            The same keyword, <code>using</code>, can appear elsewhere in C#
-                            for a completely different purpose: automatically releasing resources,
-                            such as a database connection, when they are no longer needed.
-                            <code>await using</code> performs this cleanup asynchronously.
-                        </p>
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>One keyword, two different uses: using</strong>
+                            <p>
+                                <code>using Microsoft.Data.SqlClient;</code> lets us access classes
+                                from that namespace without writing their full names.
+                                The same keyword, <code>using</code>, can appear elsewhere in C#
+                                for a completely different purpose: automatically releasing resources,
+                                such as a database connection, when they are no longer needed.
+                                <code>await using</code> performs this cleanup asynchronously.
+                            </p>
+                        </div>
                     </div>
                 </section>
                 <section class="lesson " data-panel="2" aria-labelledby="t2" hidden>
@@ -351,9 +374,15 @@ FROM dbo.Students;</code></pre>
                         <p class="intro-line">One database. Three related tables. The same records throughout the
                             session.</p>
                     </div>
-                    <div class="s2-note"><strong>The training centre’s question</strong>
-                        <p>How many students are registered? Who is the student with a given ID? Which courses is that
-                            student enrolled in?</p>
+
+
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content"><strong>The training centre’s question</strong>
+                            <p>How many students are registered? Who is the student with a given ID? Which courses is
+                                that
+                                student enrolled in?</p>
+                        </div>
                     </div>
                     <div class="schema-map">
                         <div class="entity" id="entityStudents">
@@ -375,10 +404,14 @@ FROM dbo.Students;</code></pre>
                     <div class="id-pills" id="traceChoices"></div>
                     <div id="datasetTables"></div>
                     <div class="feedback" id="traceFeedback" aria-live="polite"></div>
-                    <div class="s2-note"><strong>Two different “empty” cases</strong>
-                        <p>Sara (ID 4) exists but has no enrollments. ID 99 does not exist. Keep those cases separate
-                            when interpreting the JOIN report.</p>
-                    </div>
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content"><strong>Two different “empty” cases</strong>
+                            <p>Sara (ID 4) exists but has no enrollments. ID 99 does not exist. Keep those cases
+                                separate
+                                when interpreting the JOIN report.</p>
+                        </div>
+                    </div>div>
                     <details class="s2-details">
                         <summary>Database setup · supplied support file</summary>
                         <p>The SQL script is ready so the practical time stays focused on ADO.NET. Run it once in SSMS
@@ -445,19 +478,22 @@ FROM dbo.Students;</code></pre>
                         </table>
                     </div>
                     <div class="s2-note">
-                        <strong>Classroom prerequisites</strong>
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>Classroom prerequisites</strong>
 
-                        <p>
-                            This lab uses <strong>Visual Studio 2026</strong>
-                            with the <strong>.NET 10 SDK</strong> and
-                            <strong>Microsoft.Data.SqlClient</strong>
-                            You also need access to SQL Server and SSMS.
-                        </p>
-                        <p>
-                            Open the supplied Console project and allow NuGet
-                            to restore its packages. <br>Package restore requires
-                            internet access unless the packages are already cached.
-                        </p>
+                            <p>
+                                This lab uses <strong>Visual Studio 2026</strong>
+                                with the <strong>.NET 10 SDK</strong> and
+                                <strong>Microsoft.Data.SqlClient</strong>
+                                You also need access to SQL Server and SSMS.
+                            </p>
+                            <p>
+                                Open the supplied Console project and allow NuGet
+                                to restore its packages. <br>Package restore requires
+                                internet access unless the packages are already cached.
+                            </p>
+                        </div>
                     </div>
                     <div class="todo-banner"><span class="todo-number">TODO 00</span>
                         <div><strong>In your prepared Program.cs</strong>
@@ -1487,9 +1523,15 @@ ORDER BY c.CourseId;</code></pre>
                             </tbody>
                         </table>
                     </div>
-                    <div class="s2-note"><strong>A repeated name is expected</strong>
-                        <p>Lina appears twice because she has two enrollments. This is one result set from one command,
-                            not a request for a new connection to each table.</p>
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>A repeated name is expected</strong>
+                            <p>Lina appears twice because she has two enrollments. This is one result set from one
+                                command,
+                                not a request for a new connection to each table.</p>
+
+                        </div>
                     </div>
                     <details class="s2-details">
                         <summary>Reveal the C# adaptation after tracing the SQL</summary>
@@ -1947,20 +1989,27 @@ using Microsoft.Data.SqlClient;
                             </li>
                         </ul>
                     </div>
-                    <div class="s2-note"><strong>Next · Session 03</strong>
-                        <p>Extend the same project with INSERT, UPDATE and DELETE using typed parameters and
-                            <code>ExecuteNonQueryAsync</code>. It returns an integer, often the affected-row count for
-                            simple DML; “NonQuery” does not mean “returns nothing”.
-                        </p>
-                    </div>
-                    <div class="completion-card" id="completionCard" hidden><span class="confetti"
-                            aria-hidden="true">✓</span><span class="section-kicker">Session 02 completed</span>
-                        <h2>Your SQL now has a C# route.</h2>
-                        <p>Keep your Program.cs. We’ll build on this work in Session 03.</p>
-                        <div class="actions"><button class="s2-btn" id="reviewSession">Review from the information
-                                check</button><button class="s2-btn primary" id="downloadProgress">Download my learning
-                                record</button></div>
-                    </div>
+
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>Next · Session 03</strong>
+                            <p>Extend the same project with INSERT, UPDATE and DELETE using typed parameters and
+                                <code>ExecuteNonQueryAsync</code>. It returns an integer, often the affected-row count
+                                for
+                                simple DML; “NonQuery” does not mean “returns nothing”.
+                            </p>
+                        </div>
+
+                        <div class="completion-card" id="completionCard" hidden><span class="confetti"
+                                aria-hidden="true">✓</span><span class="section-kicker">Session 02 completed</span>
+                            <h2>Your SQL now has a C# route.</h2>
+                            <p>Keep your Program.cs. We’ll build on this work in Session 03.</p>
+                            <div class="actions"><button class="s2-btn" id="reviewSession">Review from the information
+                                    check</button><button class="s2-btn primary" id="downloadProgress">Download my
+                                    learning
+                                    record</button></div>
+                        </div>
                 </section>
                 <section class="lesson" data-panel="sources" aria-labelledby="tSources" hidden>
                     <div class="panel-head"><span class="section-kicker">Reference shelf</span>
@@ -2011,7 +2060,10 @@ using Microsoft.Data.SqlClient;
         </div>
     </div>
     <div class="toast" id="toast" role="status" hidden></div><noscript>
-        <div class="s2-note">Enable JavaScript to use lesson navigation and feedback. The downloaded starter and SQL
+
+        <div class="s2-note">
+
+            Enable JavaScript to use lesson navigation and feedback. The downloaded starter and SQL
             file can still be opened directly.</div>
     </noscript>
 </body>
