@@ -1920,45 +1920,59 @@ using Microsoft.Data.SqlClient;
                     <div class="s2-card" id="homework">
                         <h2>Homework · Before Session 03</h2>
 
+                        <h3><strong></strong>Business requirement </strong></h3>
+
+
                         <p>
-                            Keep your completed TODOs and add a course lookup
-                            to the same application.
+                            The training administrator needs to see which students are enrolled
+                            in a particular course. The application should accept a CourseId
+                            and display the enrolled students’ IDs and names.
+                            If no enrollments are found, it should display a clear message.
+                        </p>
+
+
+                        <h3><strong></strong>Your task</strong></h3>
+
+
+                        <p>
+                            Keep your completed TODOs and add this feature to the same application.
                         </p>
 
                         <ol>
                             <li>
-                                Ask for a positive CourseId.
-                                Reject invalid input before opening a connection.
+                                Ask for a positive CourseId. Reject invalid input before
+                                opening a connection.
                             </li>
                             <li>
-                                Use a typed <code>@courseId</code> parameter and join
-                                Students with Enrollments to display the IDs and names
-                                of students enrolled in that course.
+                                Join Students with Enrollments and filter by the entered
+                                CourseId using a typed <code>@courseId</code> parameter
+                                (<code>SqlDbType.Int</code>).
                             </li>
                             <li>
-                                Read the results using
-                                <code>ExecuteReaderAsync()</code> and
-                                <code>ReadAsync()</code>.
+                                Read all matching rows using <code>ExecuteReaderAsync()</code>
+                                and a <code>while (await reader.ReadAsync())</code> loop.
+                                Display each student’s ID and name.
                                 If there are no rows, display
                                 <strong>No enrollments found for this course ID.</strong>
                             </li>
                         </ol>
 
                         <p>
-                            Test with <code>101</code>, <code>99</code> and
-                            <code>abc</code>. Use a short
-                            <code>await using</code> connection scope.
+                            Test with <code>101</code>, <code>99</code> and <code>abc</code>.
+                            Use a short <code>await using</code> connection scope.
                         </p>
 
-                        <h3>Submit one Program.cs file</h3>
+
+
+
+                        <h2>Code Lab Submission</h2>
 
                         <p>
                             Submit one <strong>Program.cs</strong> file through the instructor’s
                             Google Classroom activity before Session 03.
                             Include your name in a comment, your completed TODOs,
                             the course lookup and the exception handlers demonstrated
-                            in the live session.
-                            Add a short comment explaining each parameter’s name,
+                            in the live session.<br>Add a short comment explaining each parameter’s name,
                             SQL type and value.
                         </p>
 
@@ -1990,12 +2004,13 @@ using Microsoft.Data.SqlClient;
                                 </label>
                             </li>
 
-                            <li> <label>
+                            <li><label>
                                     <input type="checkbox" data-check="lifetime-explained">
-                                    Add the <code>InvalidCastException</code> and
-                                    <code>InvalidOperationException</code> catch blocks demonstrated
-                                    in the live session. Display a helpful message for each error,
-                                    and add a short comment explaining what it handles.
+                                    <span>Add the <code>InvalidCastException</code> and
+                                        <code>InvalidOperationException</code> catch blocks demonstrated in the live
+                                        session. Display a helpful message for each error, and add a short comment
+                                        explaining what it handles.</span>
+
                                 </label>
                             </li>
 
