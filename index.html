@@ -1,0 +1,2019 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#102d49">
+    <meta name="description"
+        content="DB3 Session 02: check prior knowledge, then complete a prepared ADO.NET Console app with numbered TODOs, SQL Server connections, readers and typed parameters.">
+    <title>DB3 · Session 02 · From SQL Queries to C# Results</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/session02.css">
+    <script defer src="js/app.js"></script>
+</head>
+
+<body><a class="skip-link" href="#content">Skip to learning content</a>
+    <div class="shell">
+        <div class="mobile-scrim" id="scrim" hidden></div>
+        <aside class="sidebar" id="sidebar" aria-label="Lesson navigation">
+            <div class="brand"><span class="brand-mark" aria-hidden="true">▤</span><span><small>TVET
+                        INTERACTIVE</small><strong>CODELAB STUDIO</strong></span><button class="icon-btn close-menu"
+                    id="closeMenu" aria-label="Close lesson navigation">×</button></div>
+            <div class="course-block"><span class="course-code">DBM · PDB2 · 2026–2027</span>
+                <h2>Database<br>Management</h2>
+                <p>02 / From SQL queries to C# results</p>
+                <div class="progress-heading"><span>Lesson progress</span><strong id="progressText">0 / 10</strong>
+                </div>
+                <div class="progress-bar" id="progressBar" role="progressbar" aria-label="Completed lesson sections"
+                    aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+                    <div id="progressFill"></div>
+                </div>
+            </div>
+            <nav aria-label="Lesson sections">
+                <ol class="step-nav">
+                    <li><button class="step-link active" data-step="0" aria-current=step><span
+                                class="step-num">01</span><span>Information check<small>10 min</small></span><span
+                                aria-hidden="true" class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="1"><span class="step-num">02</span><span>Choose the right
+                                provider<small>10 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="2"><span class="step-num">03</span><span>Meet the
+                                database<small>10 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="3"><span class="step-num">04</span><span>Open the prepared
+                                app<small>10 min</small></span><span aria-hidden="true" class="tick">✓</span></button>
+                    </li>
+                    <li><button class="step-link " data-step="4"><span class="step-num">05</span><span>Connect to SQL
+                                Server<small>20 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="5"><span class="step-num">06</span><span>Return one
+                                value<small>10 min</small></span><span aria-hidden="true" class="tick">✓</span></button>
+                    </li>
+                    <li><button class="step-link " data-step="6"><span class="step-num">07</span><span>Read student
+                                rows<small>15 min</small></span><span aria-hidden="true" class="tick">✓</span></button>
+                    </li>
+                    <li><button class="step-link " data-step="7"><span class="step-num">08</span><span>Find a student
+                                safely<small>20 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="8"><span class="step-num">09</span><span>Guided enrollment
+                                report<small>10 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                    <li><button class="step-link " data-step="9"><span class="step-num">10</span><span>Review &amp;
+                                what’s next<small>5 min</small></span><span aria-hidden="true"
+                                class="tick">✓</span></button></li>
+                </ol>
+            </nav>
+            <div class="sidebar-resources"><span>QUICK RESOURCES</span><a href="#sources" id="sourcesLink">↗ Sources &
+                    downloads</a><a href="downloads/DB3_Session02_Student_Starter.zip" download>↓ Student starter
+                    project</a><button id="resetProgress">↺ Reset this session</button></div>
+            <div class="sidebar-foot">UNRWA Gaza Training Centre<br>Programming and Database Level 2</div>
+        </aside>
+        <div class="workspace">
+            <header class="topbar"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open lesson navigation"
+                    aria-controls="sidebar" aria-expanded="false">☰</button>
+                <div class="breadcrumb">DATABASE MANAGEMENT <span> / </span><b>SESSION 02</b></div>
+                <div class="top-actions"><span class="time-pill">◷ 120 MIN</span><button class="icon-btn" id="themeBtn"
+                        aria-label="Switch to dark mode" title="Change theme">◐</button></div>
+            </header>
+            <main class="main" id="content" tabindex="-1">
+                <section class="lesson active" data-panel="0" aria-labelledby="t0">
+                    <div class="hero hero-intro">
+                        <div class="hero-main"><span class="eyebrow">TVET INTERACTIVE CODELAB STUDIO · SESSION 02</span>
+                            <h1>From SQL queries<br>to <em>C# results</em></h1>
+                            <p>Recall what you know. Then complete the missing database-access code.</p>
+                            <div class="chips"><span>GTC · PDB2</span><span>ADO.NET</span><span>120 minutes</span></div>
+                        </div>
+                    </div>
+                    <div class="heading-row">
+                        <div><span class="section-kicker">Step 01 / 10 · 10 minutes</span>
+                            <h2 id="t0" tabindex="-1">Before we begin: information check</h2>
+                        </div><span class="duration">6 QUESTIONS</span>
+                    </div>
+                    <p class="intro-line">Start with what you already know from Session 01 and your SQL course.</p>
+                    <div class="s2-note"><strong>Choose first. Then explain one answer.</strong>
+                        <p>Answer independently before opening a hint. Check each answer for immediate feedback, then
+                            discuss one choice with a classmate or in the class chat. This is a diagnostic activity; it
+                            carries no formal marks and does not lock the lesson.</p>
+                    </div>
+                    <div id="warmupQuiz"></div>
+                    <div class="quiz-summary">
+                        <div><strong id="warmupScore" aria-live="polite">0 of 6 checked</strong>
+                            <div class="muted">Use the feedback to decide what needs a quick recap.</div>
+                        </div><button class="s2-btn small" data-reset-quiz="warmup">Try the check again</button>
+                    </div>
+                    <div class="s2-card">
+                        <h2>Today’s destination</h2>
+                        <p>You will open a prepared C# Console application, complete its numbered <code>TODO</code>
+                            comments, connect to SQL Server, count students, read rows and find a student with a typed
+                            parameter. A three-table enrollment report is a guided extension.</p>
+                    </div>
+                    <div class="dash-note"><img src="images/db-mascot-teacher.webp"
+                            alt="DB Mentor, the database teacher mascot" width="94" height="94">
+                        <div><strong>DB Mentor · One step at a time</strong>
+                            <p>You do not need to know today’s ADO.NET method names yet. Begin with the six questions
+                                above.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="lesson " data-panel="1" aria-labelledby="t1" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 02 / 10 · 10 minutes</span>
+                        <h1 id="t1" tabindex="-1">Choose the right provider</h1>
+                        <p class="intro-line">A C# application needs an API that can communicate with the resource it
+                            wants to use.</p>
+                    </div>
+                    <p>A database provider exposes the classes used to communicate with a particular database
+                        system.<br>
+                        For SQL Server, we use <strong>Microsoft.Data.SqlClient</strong>, delivered as a NuGet package.
+                    </p>
+                    <div class="concept-flow" aria-label="Application data access route">
+                        <div class="flow-node"><b>C# Console app</b><small>Your program</small></div><span
+                            class="flow-arrow" aria-hidden="true">→</span>
+                        <div class="flow-node"><b>Microsoft.Data.SqlClient</b><small>SQL Server ADO.NET provider</small>
+                        </div><span class="flow-arrow" aria-hidden="true">→</span>
+                        <div class="flow-node"><b>SQL Server</b><small>Executes SQL and stores data</small></div>
+                    </div>
+                    <div class="s2-table-wrap">
+                        <table class="s2-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Appropriate tool</th>
+                                    <th scope="col">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Query SQL Server</td>
+                                    <td>Microsoft.Data.SqlClient</td>
+                                    <td>ADO.NET provider / NuGet package</td>
+                                </tr>
+                                <tr>
+                                    <td>Request data from a web API</td>
+                                    <td>System.Net.Http.HttpClient</td>
+                                    <td>HTTP client class / API</td>
+                                </tr>
+                                <tr>
+                                    <td>Read a local text file</td>
+                                    <td>System.IO.File / StreamReader</td>
+                                    <td>File I/O classes / APIs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="s2-note"><strong>Same principle, different categories</strong>
+                        <p>Use the appropriate API for the task. HttpClient and File are not SQL data providers, and not
+                            every API needs an external NuGet package.</p>
+                    </div>
+                    <div class="s2-card">
+                        <h2>Check the route</h2>
+                        <p>Choose a tool for each task, then explain why it fits.</p>
+                        <div id="providerMatch"></div><button class="s2-btn primary" id="checkProvider">Check my
+                            choices</button>
+                        <div id="providerFeedback" class="feedback" role="status" hidden></div>
+                    </div>
+                    <div class="s2-table-wrap">
+                        <table class="s2-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Term</th>
+                                    <th scope="col">Example</th>
+                                    <th scope="col">Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Package</td>
+                                    <td>Microsoft.Data.SqlClient</td>
+                                    <td>A reusable dependency restored through NuGet</td>
+                                </tr>
+                                <tr>
+                                    <td>Namespace</td>
+                                    <td>Microsoft.Data.SqlClient</td>
+                                    <td>A logical grouping of types</td>
+                                </tr>
+                                <tr>
+                                    <td>Class</td>
+                                    <td>SqlConnection</td>
+                                    <td>A type used to create connection objects</td>
+                                </tr>
+                                <tr>
+                                    <td>Object</td>
+                                    <td>connection</td>
+                                    <td>One instance of that class</td>
+                                </tr>
+                                <tr>
+                                    <td>Method</td>
+                                    <td>OpenAsync()</td>
+                                    <td>An operation called on an object</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="s2-card">
+                        <h2>Four components you will use</h2>
+                        <div class="component-tabs" id="componentTabs"></div>
+                        <div class="feedback" id="componentText" aria-live="polite"></div>
+                    </div>
+                    <div class="s2-card" id="countWalkthrough">
+                        <h2>A first example: count the students</h2>
+
+                        <p class="count-intro">
+                            Imagine the simplest possible read-only task:
+                            count the rows in <code>dbo.Students</code>.<br>
+                            Before writing the complete application, let’s follow the
+                            steps needed to obtain that answer.
+                        </p>
+
+                        <h3>Explore the steps</h3>
+
+                        <p class="count-intro">
+                            Select each stage to see what it is responsible for.
+                            Follow the stages in order.
+                        </p>
+
+                        <div class="pipeline-steps" aria-label="Steps for counting student records">
+
+                            <button type="button" class="active" data-count-stage="prepare" aria-pressed="true">
+                                1 · Prepare connection
+                            </button>
+
+                            <button type="button" data-count-stage="connection" aria-pressed="false">
+                                2 · Connection object
+                            </button>
+
+                            <button type="button" data-count-stage="open" aria-pressed="false">
+                                3 · Open
+                            </button>
+
+                            <button type="button" data-count-stage="command" aria-pressed="false">
+                                4 · Command
+                            </button>
+
+                            <button type="button" data-count-stage="scalar" aria-pressed="false">
+                                5 · Scalar result
+                            </button>
+
+                            <button type="button" data-count-stage="dispose" aria-pressed="false">
+                                6 · Dispose
+                            </button>
+                        </div>
+
+                        <div class="layer-detail" id="countWalkthroughDetail" aria-live="polite">
+
+                            <strong>1 · Prepare the connection settings</strong>
+
+                            <p>
+                                First, identify the SQL Server instance, the database,
+                                and the authentication method. Store these settings
+                                in a <strong>connection string</strong>.
+                            </p>
+
+                            <p>
+                                At this stage, we have only prepared information.
+                                We have not created a connection object, contacted
+                                SQL Server, or executed any SQL.
+                            </p>
+                        </div>
+
+                        <div class="split-compare">
+                            <div class="concept-card">
+                                <h3>What goes in?</h3>
+
+                                <p>
+                                    A connection string tells the provider
+                                    <em>where</em> to connect and
+                                    <em>how</em> to authenticate.
+                                    The SQL text tells SQL Server
+                                    <em>what</em> to calculate.
+                                </p>
+
+                                <pre class="code-block"><code>SELECT COUNT(*)
+FROM dbo.Students;</code></pre>
+                            </div>
+
+                            <div class="concept-card accent">
+                                <h3>What comes back?</h3>
+
+                                <p>
+                                    One number: how many rows the Students table contains.
+                                    <code>ExecuteScalarAsync()</code> retrieves the
+                                    first column of the first returned row.
+                                </p>
+
+                                <div class="single-number">
+                                    4 <span>rows in this example’s starter table</span>
+                                </div>
+
+                                <p class="small-muted">
+                                    If the table contains additional records,
+                                    the returned count will be different.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="s2-note">
+                            <strong>Preparing is different from opening</strong>
+
+                            <p>
+                                Writing a connection string prepares the settings.
+                                Creating a <code>SqlConnection</code> creates an object
+                                that holds those settings.
+                                Calling <code>OpenAsync()</code> attempts to establish
+                                the actual database connection.
+                            </p>
+
+                            <p>
+                                Similarly, creating a <code>SqlCommand</code> prepares
+                                an instruction. Calling an execution method, such as
+                                <code>ExecuteScalarAsync()</code>, sends it for execution.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="s2-note">
+                        <strong>One keyword, two different uses: using</strong>
+                        <p>
+                            <code>using Microsoft.Data.SqlClient;</code> lets us access classes
+                            from that namespace without writing their full names.
+                            The same keyword, <code>using</code>, can appear elsewhere in C#
+                            for a completely different purpose: automatically releasing resources,
+                            such as a database connection, when they are no longer needed.
+                            <code>await using</code> performs this cleanup asynchronously.
+                        </p>
+                    </div>
+                </section>
+                <section class="lesson " data-panel="2" aria-labelledby="t2" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 03 / 10 · 10 minutes</span>
+                        <h1 id="t2" tabindex="-1">Meet the registration database</h1>
+                        <p class="intro-line">One database. Three related tables. The same records throughout the
+                            session.</p>
+                    </div>
+                    <div class="s2-note"><strong>The training centre’s question</strong>
+                        <p>How many students are registered? Who is the student with a given ID? Which courses is that
+                            student enrolled in?</p>
+                    </div>
+                    <div class="schema-map">
+                        <div class="entity" id="entityStudents">
+                            <h3>Students</h3><code>StudentId · PK</code><code>FullName</code>
+                        </div>
+                        <div class="entity" id="entityEnrollments">
+                            <h3>Enrollments</h3>
+                            <code>EnrollmentId · PK</code><code>StudentId · FK → Students</code><code>CourseId · FK → Courses</code>
+                        </div>
+                        <div class="entity" id="entityCourses">
+                            <h3>Courses</h3><code>CourseId · PK</code><code>CourseName</code><code>CreditHours</code>
+                        </div>
+                    </div>
+                    <p><strong>PK</strong> identifies a row. An <strong>FK</strong> links to the key of another table.
+                        The unique <code>(StudentId, CourseId)</code> pair prevents duplicate enrollments in this single
+                        registration period.</p>
+                    <h2>Trace a student across the tables</h2>
+                    <p class="muted">Select an ID. Follow the highlighted student, enrollment and course rows.</p>
+                    <div class="id-pills" id="traceChoices"></div>
+                    <div id="datasetTables"></div>
+                    <div class="feedback" id="traceFeedback" aria-live="polite"></div>
+                    <div class="s2-note"><strong>Two different “empty” cases</strong>
+                        <p>Sara (ID 4) exists but has no enrollments. ID 99 does not exist. Keep those cases separate
+                            when interpreting the JOIN report.</p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Database setup · supplied support file</summary>
+                        <p>The SQL script is ready so the practical time stays focused on ADO.NET. Run it once in SSMS
+                            on the instance your app will use. It checks existing schema and constraints, adds missing
+                            starter records and does not delete existing work. An incompatible schema stops with an
+                            error.</p><a class="s2-btn" href="downloads/setup.sql" download>Download setup.sql</a>
+                        <p class="muted">Creating a database needs permission. If this name is already used for another
+                            exercise, ask the instructor for a new lab database name and update both the script and
+                            connection string. Extra existing records change the expected counts.</p>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="3" aria-labelledby="t3" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 04 / 10 · 10 minutes</span>
+                        <h1 id="t3" tabindex="-1">Open the prepared application</h1>
+                        <p class="intro-line">The project is ready. Your job is to complete and understand the
+                            database-access TODOs.</p>
+                    </div>
+                    <div class="actions"><a class="s2-btn primary" href="downloads/DB3_Session02_Student_Starter.zip"
+                            download>↓ Download student starter</a><a class="s2-btn" href="downloads/setup.sql"
+                            download>↓ SQL setup script</a></div>
+                    <div class="s2-card">
+                        <h2>Open → restore → run → find TODO 00</h2>
+                        <ol>
+                            <li><strong>Extract</strong> the ZIP into a normal writable folder.</li>
+                            <li>In <strong>Visual Studio</strong>, choose <strong>Open a project or solution</strong>
+                                and open <code>DB3.Session02.csproj</code>.</li>
+                            <li>Allow <strong>NuGet package restore</strong>. If needed, right-click the solution and
+                                choose <strong>Restore NuGet Packages</strong>.</li>
+                            <li>Right-click the project → <strong>Manage NuGet Packages</strong> →
+                                <strong>Installed</strong>. Locate <code>Microsoft.Data.SqlClient</code>.
+                            </li>
+                            <li>Open <code>Program.cs</code> and run with <strong>Ctrl + F5</strong>. The starter prints
+                                TODO messages and asks for an ID. It does not yet contact SQL Server.</li>
+                            <li>Locate <code>TODO 00</code>. Complete one numbered TODO at a time using the matching
+                                lesson step.</li>
+                        </ol>
+                    </div>
+                    <div class="s2-table-wrap">
+                        <table class="s2-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Included file</th>
+                                    <th scope="col">Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>DB3.Session02.csproj</td>
+                                    <td>Ready Console project and SqlClient package reference</td>
+                                </tr>
+                                <tr>
+                                    <td>Program.cs</td>
+                                    <td>Imports, prompts, input handling and numbered TODO placeholders</td>
+                                </tr>
+                                <tr>
+                                    <td>setup.sql</td>
+                                    <td>Students, Courses, Enrollments and fixed starter records</td>
+                                </tr>
+                                <tr>
+                                    <td>START-HERE.md</td>
+                                    <td>Opening instructions and classroom prerequisites</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="s2-note">
+                        <strong>Classroom prerequisites</strong>
+
+                        <p>
+                            This lab uses <strong>Visual Studio 2026</strong>
+                            with the <strong>.NET 10 SDK</strong> and
+                            <strong>Microsoft.Data.SqlClient</strong>
+                            You also need access to SQL Server and SSMS.
+                        </p>
+                        <p>
+                            Open the supplied Console project and allow NuGet
+                            to restore its packages. <br>Package restore requires
+                            internet access unless the packages are already cached.
+                        </p>
+                    </div>
+                    <div class="todo-banner"><span class="todo-number">TODO 00</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>Copy the exact server name from SSMS and confirm the database and authentication method.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="s2-card">
+
+                        <h2>CONNECTION SETUP</h2>
+                        <ol>
+                            <li>In SSMS, open the connected server’s <strong>Connection Properties</strong>, or inspect
+                                the Connect to Server dialog.</li>
+                            <li>Copy <strong>Server name</strong> exactly; note <strong>Authentication</strong>.</li>
+                            <li>Use the same instance in C#. A name such as <code>(localdb)\MSSQLLocalDB</code> works
+                                only when that Windows LocalDB instance is installed.</li>
+                            <li>Confirm <code>TVET_DBM_Lab01</code> is present after running the supplied setup script.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="dbm-server-guide" id="dbm-server-guide">
+
+
+
+
+                        <h3>Copy Your Actual SQL Server Connection Details</h3>
+
+                        <p class="guide-intro">
+                            In SSMS, open the <strong>Connect</strong> window and
+                            check the <strong>Connection Properties</strong> tab.
+                            Copy your <strong>Server Name</strong> and note the
+                            <strong>Authentication Method</strong>.
+                            You will use these details in the next step to configure
+                            your C# connection string.
+                        </p>
+
+
+
+                        <div class="guide-flow">
+
+                            <!-- LEFT: SSMS -->
+                            <div class="guide-panel">
+                                <div class="panel-title">
+                                    <span class="step-number">1</span>
+                                    SSMS · Connection Details
+                                </div>
+
+                                <div class="fake-field">
+                                    <label>Server name · Copy this value</label>
+                                    <div class="fake-value highlight">.\SQLEXPRESS</div>
+                                </div>
+
+                                <div class="fake-field">
+                                    <label>Authentication</label>
+                                    <div class="fake-value">Windows Authentication</div>
+                                </div>
+
+                                <p class="panel-hint">
+                                    Example only. Use your own SQL Server instance.
+                                </p>
+                            </div>
+
+                            <div class="flow-arrow" aria-hidden="true">➜</div>
+
+                            <!-- RIGHT: C# -->
+                            <div class="guide-panel">
+                                <div class="panel-title">
+                                    <span class="step-number">2</span>
+                                    Visual Studio · Program.cs
+                                </div>
+
+                                <div class="guide-code">string cs =
+                                    @"<mark>Server=.\SQLEXPRESS</mark>;Database=TVET_DBM_Lab01;Integrated
+                                    Security=True;Encrypt=True;TrustServerCertificate=True";</div>
+
+                                <p class="panel-hint">
+                                    Use your SSMS server name in place of the example.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · TODO 00 configuration</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>string connectionString =
+    @&quot;Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;&quot;;</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>string connectionString</dt>
+                        <dd>A variable that stores connection settings. It does not open a connection.</dd>
+                        <dt>@"..."</dt>
+                        <dd>A C# verbatim string: for server names, lets you write backslashes
+                            (\) directly, without doubling them. For example, use @".\SQLEXPRESS" instead of
+                            ".\\SQLEXPRESS"; both produce the same.</dd>
+                        <dt>Server / Database</dt>
+                        <dd>Identify the SQL Server instance and the database within it. Replace YOUR_SERVER.</dd>
+                        <dt>Integrated Security=True</dt>
+                        <dd>Uses your Windows identity. It must match your classroom authentication setup.</dd>
+                        <dt>Encrypt=True</dt>
+                        <dd>Keeps transport encryption enabled.</dd>
+                        <dt>TrustServerCertificate=True</dt>
+                        <dd>Bypasses certificate validation for this local classroom example. Production requires a
+                            trusted certificate and validation.</dd>
+                        <dt>Connect Timeout=10</dt>
+                        <dd>Limits the time spent trying to establish a connection.</dd>
+                    </dl>
+
+                    <details class="s2-details">
+                        <summary>Inspect the untouched starter · complete Program.cs</summary>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · starter, later tasks intentionally
+                                    unimplemented</span><button class="copy-btn" type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+
+// DB3 Session 02 — complete ONE numbered TODO at a time.
+// This is a supplied project. Supporting input and error handling are ready.
+
+Console.WriteLine("DB3 — From SQL Queries to C# Results");
+
+// TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+// This example uses Windows authentication; ask your instructor if yours differs.
+// TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+// It bypasses certificate validation; do not copy it into a production app.
+string connectionString =
+    @"Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;";
+
+try
+{
+    // TODO 01 — Create and open the connection.
+    // Replace the message with an await using block.
+    // Construct SqlConnection, print its State, then await OpenAsync().
+    // Print State again. Leave the block to dispose the connection.
+    Console.WriteLine("TODO 01: connection is not implemented yet.");
+
+    // TODO 02 — Count students.
+    // In a NEW short connection scope, open the connection.
+    // Create a SqlCommand for SELECT COUNT(*) FROM dbo.Students;
+    // Use ExecuteScalarAsync() and print the returned value.
+    Console.WriteLine("TODO 02: student count is not implemented yet.");
+
+    // TODO 03 — Read student rows.
+    // In a NEW short connection scope, run the supplied SELECT.
+    // Use ExecuteReaderAsync(), then while (await reader.ReadAsync()).
+    // Read column 0 as int and column 1 as string.
+    Console.WriteLine("TODO 03: student list is not implemented yet.");
+    // Input is collected AFTER earlier connection scopes have ended.
+    Console.Write("Enter a positive StudentId (try 1, 4, 99 or abc): ");
+    string? input = Console.ReadLine();
+    if (!int.TryParse(input, out int studentId) || studentId <= 0)
+    {
+        Console.WriteLine("Enter a valid positive integer. Lookup was not sent to SQL Server.");
+        return;
+    }
+    // TODO 04 — Find a student safely.
+    // studentId is already validated above. Open a NEW short connection.
+    // Use WHERE StudentId = @studentId and a typed SqlDbType.Int parameter.
+    // Read the matching row or print Student not found.
+    Console.WriteLine("TODO 04: student lookup is not implemented yet.");
+
+    // TODO 05 — Guided extension: read student enrollments.
+    // Reuse studentId in a NEW short connection scope.
+    // Use the supplied INNER JOIN, a typed parameter and a reader loop.
+    // If no rows are returned, print No enrollments found for this ID.
+    Console.WriteLine("TODO 05: enrollment report is not implemented yet.");
+}
+catch (SqlException ex)
+{
+    Console.WriteLine($"SQL Server error {ex.Number}: {ex.Message}");
+    Console.WriteLine("Check the server connection, database setup and SQL command.");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Check the connection string: {ex.Message}");
+}
+
+</code></pre>
+                        </div>
+                    </details>
+                    <div class="s2-card">
+                        <h2>Ready to continue?</h2>
+                        <ul class="s2-checklist">
+                            <li><label><input type="checkbox" data-check="starter-open"> I opened the supplied project
+                                    and restored its package.</label></li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" data-check="database-prepared">
+                                    I ran the SQL setup script in SSMS to create the database, tables and starter data.
+                                </label>
+                            </li>
+                            <li><label><input type="checkbox" data-check="starter-run"> The unmodified starter runs with
+                                    Ctrl + F5.</label></li>
+                            <li><label><input type="checkbox" data-check="server-confirmed"> I know my server name,
+                                    database and authentication method.</label></li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="lesson " data-panel="4" aria-labelledby="t4" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 05 / 10 · 20 minutes</span>
+                        <h1 id="t4" tabindex="-1">Connect to SQL Server</h1>
+                        <p class="intro-line">Creating a connection object and opening a connection are different
+                            operations.</p>
+                    </div>
+                    <div class="todo-banner"><span class="todo-number">TODO 01</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>Replace the TODO 01 message and its placeholder comments with the block below. Keep the
+                                supplied try/catch scaffold.</p>
+                        </div>
+                    </div>
+                    <p>Predict the two connection states before running. Creating <code>SqlConnection</code> prepares an
+                        object. <code>OpenAsync()</code> attempts to establish the actual database connection.</p>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · replacement block</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>            // TODO 01 — Completed: create, open and dispose a connection.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine($&quot;Before OpenAsync: {connection.State}&quot;);
+                await connection.OpenAsync();
+                Console.WriteLine($&quot;After OpenAsync: {connection.State}&quot;);
+            } // DisposeAsync runs here, including when the block exits by exception.</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>new SqlConnection(connectionString)</dt>
+                        <dd>Constructs a connection object using your settings; its initial state is Closed.</dd>
+                        <dt>await using (...) { ... }</dt>
+                        <dd>Creates a resource scope. The connection is disposed asynchronously when that block exits.
+                        </dd>
+                        <dt>var connection</dt>
+                        <dd>The compiler infers SqlConnection. The variable holds this object.</dd>
+                        <dt>connection.State</dt>
+                        <dd>Reports the connection state. Print it before and after opening.</dd>
+                        <dt>await connection.OpenAsync()</dt>
+                        <dd>Waits for the open operation to complete. The following line runs after successful opening;
+                            failures leave through the exception path.</dd>
+                        <dt>Console.WriteLine($"...")</dt>
+                        <dd>Prints text. The $ string inserts the value inside braces.</dd>
+                        <dt>Closing brace</dt>
+                        <dd>Ends this short scope. DisposeAsync releases this connection for reuse; it does not wait for
+                            the whole application to finish.</dd>
+                    </dl>
+                    <div class="sim-box"><span class="sim-label">Concept simulation · does not connect to SQL
+                            Server</span>
+                        <h3>Follow the connection’s lifetime</h3>
+                        <div class="actions"><button class="s2-btn" data-lifecycle="create">1 · Create</button><button
+                                class="s2-btn" data-lifecycle="open">2 · Open</button><button class="s2-btn"
+                                data-lifecycle="dispose">3 · Leave scope</button><button class="s2-btn small"
+                                data-lifecycle="reset">Reset</button></div>
+                        <div class="terminal" id="lifecycleOutput" role="status">No connection object has been created.
+                        </div>
+                    </div>
+                    <div class="s2-note"><strong>What about Close, Dispose and finally?</strong>
+                        <p><code>Close()</code> closes the logical connection. <code>Dispose()</code> /
+                            <code>DisposeAsync()</code> also handles resource cleanup. A using scope gives automatic
+                            cleanup when control leaves the scope, including after an exception. You do not need a
+                            second manual Close after await using.
+                        </p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Why using is safer than “remember to close”</summary>
+                        <p>Conceptually, resource scopes arrange cleanup with try/finally logic. A finally block runs as
+                            control leaves try, even when an exception occurs. The compiler supplies the cleanup for
+                            using; do not add this as a second connection task.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · explanatory alternative, not an extra TODO</span><button
+                                    class="copy-btn" type="button">Copy code</button></div>
+                            <pre><code>var connection = new SqlConnection(connectionString);
+try
+{
+    await connection.OpenAsync();
+    // Use the connection here.
+}
+finally
+{
+    await connection.DisposeAsync();
+}</code></pre>
+                        </div>
+                        <p>With connection pooling enabled, disposing normally returns the physical connection to the
+                            pool for reuse. It does not necessarily tear down a network socket. Keep Console input
+                            outside open-connection scopes.</p>
+                    </details>
+                    <div class="s2-card">
+                        <h2>Troubleshoot the evidence</h2>
+                        <p><strong>Server not found / timeout:</strong> check the exact instance name, SQL Server
+                            service and device/network availability.</p>
+                        <p><strong>Login failed:</strong> check the authentication method and account permissions.</p>
+                        <p><strong>Cannot open database:</strong> check the database name, setup script and permissions
+                            on this same instance.</p>
+                        <p><strong>Certificate error:</strong> confirm the approved local classroom configuration with
+                            your instructor.</p>
+                    </div>
+                    <div class="proof">
+                        <h3>Predict → run → explain</h3>
+                        <p>Run with Ctrl + F5. You should see <code>Before OpenAsync: Closed</code> then
+                            <code>After OpenAsync: Open</code> only if SQL Server accepts the connection. Explain why
+                            “object created” alone is not evidence of a successful login.
+                        </p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Full runnable checkpoint 01 · Program.cs</summary>
+                        <p>Use this for comparison after your attempt. This complete file includes later TODO
+                            placeholders. If replacing your file, keep your own server configuration in TODO 00.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · complete Program.cs</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+
+// DB3 Session 02 — complete ONE numbered TODO at a time.
+// This is a supplied project. Supporting input and error handling are ready.
+
+Console.WriteLine("DB3 — From SQL Queries to C# Results");
+
+// TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+// TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+// It bypasses certificate validation; do not copy it into a production app.
+string connectionString =
+    @"Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;";
+
+try
+{
+    // TODO 01 — Create and open the connection.
+    // Replace the message with an await using block.
+    // Construct SqlConnection, print its State, then await OpenAsync().
+    // Print State again. Leave the block to dispose the connection.
+    Console.WriteLine("TODO 01: connection is not implemented yet.");
+
+    // TODO 02 — Count students.
+    // In a NEW short connection scope, open the connection.
+    // Create a SqlCommand for SELECT COUNT(*) FROM dbo.Students;
+    // Use ExecuteScalarAsync() and print the returned value.
+    Console.WriteLine("TODO 02: student count is not implemented yet.");
+
+    // TODO 03 — Read student rows.
+    // In a NEW short connection scope, run the supplied SELECT.
+    // Use ExecuteReaderAsync(), then while (await reader.ReadAsync()).
+    // Read column 0 as int and column 1 as string.
+    Console.WriteLine("TODO 03: student list is not implemented yet.");
+    // Input is collected AFTER earlier connection scopes have ended.
+    Console.Write("Enter a positive StudentId (try 1, 4, 99 or abc): ");
+    string? input = Console.ReadLine();
+    if (!int.TryParse(input, out int studentId) || studentId <= 0)
+    {
+        Console.WriteLine("Enter a valid positive integer. Lookup was not sent to SQL Server.");
+        return;
+    }
+    // TODO 04 — Find a student safely.
+    // studentId is already validated above. Open a NEW short connection.
+    // Use WHERE StudentId = @studentId and a typed SqlDbType.Int parameter.
+    // Read the matching row or print Student not found.
+    Console.WriteLine("TODO 04: student lookup is not implemented yet.");
+
+    // TODO 05 — Guided extension: read student enrollments.
+    // Reuse studentId in a NEW short connection scope.
+    // Use the supplied INNER JOIN, a typed parameter and a reader loop.
+    // If no rows are returned, print No enrollments found for this ID.
+    Console.WriteLine("TODO 05: enrollment report is not implemented yet.");
+}
+catch (SqlException ex)
+{
+    Console.WriteLine($"SQL Server error {ex.Number}: {ex.Message}");
+    Console.WriteLine("Check the server connection, database setup and SQL command.");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Check the connection string: {ex.Message}");
+}
+
+</code></pre>
+                        </div><a class="s2-btn small" href="downloads/Program-Checkpoint-01.cs" download>Download
+                            checkpoint 01</a>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="5" aria-labelledby="t5" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 06 / 10 · 10 minutes</span>
+                        <h1 id="t5" tabindex="-1">Return one value</h1>
+                        <p class="intro-line">Business question: how many students are registered?</p>
+                    </div>
+                    <div class="todo-banner"><span class="todo-number">TODO 02</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>Replace the TODO 02 placeholder with this new, short connection scope. Earlier completed
+                                TODOs stay in place.</p>
+                        </div>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>SQL · expected result: one value, 4</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>SELECT COUNT(*) FROM dbo.Students;</code></pre>
+                    </div>
+                    <p><code>COUNT(*)</code> produces one aggregate value for this table. With only the supplied data,
+                        that value is <strong>4</strong>.</p>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · replacement block</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>            // TODO 02 — Completed: one value.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using var command = new SqlCommand(
+                    &quot;SELECT COUNT(*) FROM dbo.Students;&quot;, connection);
+                object? result = await command.ExecuteScalarAsync();
+                Console.WriteLine($&quot;Student count: {result}&quot;);
+            }</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>using var command</dt>
+                        <dd>Creates a command with synchronous disposal at the end of this block. It is declared after
+                            the connection, so it is disposed first.</dd>
+                        <dt>new SqlCommand(sql, connection)</dt>
+                        <dd>Associates the SQL instruction with the open connection. The connection alone does not
+                            decide what to query.</dd>
+                        <dt>object? result</dt>
+                        <dd>ExecuteScalarAsync returns an object that can be null for some result shapes; this COUNT
+                            query produces an integer value.</dd>
+                        <dt>await command.ExecuteScalarAsync()</dt>
+                        <dd>Obtains the first column of the first returned row. It does not return all the table’s
+                            values.</dd>
+                        <dt>Student count: {result}</dt>
+                        <dd>Formats the returned scalar for display.</dd>
+                    </dl>
+                    <div class="s2-card">
+                        <h2>Choose the method by result shape</h2>
+                        <div class="s2-table-wrap">
+                            <table class="s2-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Required result</th>
+                                        <th scope="col">Method</th>
+                                        <th scope="col">Today</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>One value</td>
+                                        <td>ExecuteScalarAsync</td>
+                                        <td>Practise now</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rows and columns</td>
+                                        <td>ExecuteReaderAsync + ReadAsync</td>
+                                        <td>Next step</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data manipulation / affected-row count</td>
+                                        <td>ExecuteNonQueryAsync</td>
+                                        <td>Session 03 preview</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sim-box"><span class="sim-label">Predict before running in Visual Studio</span>
+                        <h3>What does this query return?</h3>
+                        <div class="method-options"><button class="s2-btn" data-scalar="rows">Four student
+                                records</button><button class="s2-btn" data-scalar="value">One value: 4</button><button
+                                class="s2-btn" data-scalar="columns">Two column names</button></div>
+                        <div class="feedback" id="scalarFeedback" role="status" hidden></div>
+                    </div>
+                    <div class="proof">
+                        <h3>Predict → run → explain</h3>
+                        <p>Predict the result, run the application and compare it with <code>SELECT COUNT(*)</code> in
+                            SSMS on the same database. If extra rows already existed, the count will reflect them.
+                            Explain why one value is different from four student records.</p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Full runnable checkpoint 02 · Program.cs</summary>
+                        <p>Use this for comparison after your attempt. This complete file includes later TODO
+                            placeholders. If replacing your file, keep your own server configuration in TODO 00.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · complete Program.cs</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+
+
+        Console.WriteLine(&quot;DB3 — From SQL Queries to C# Results&quot;);
+
+        // TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+        // This example uses Windows authentication; ask your instructor if yours differs.
+        // TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+        // It bypasses certificate validation; do not copy it into a production app.
+        string connectionString =
+            @&quot;Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;&quot;;
+
+        try
+        {
+            // TODO 01 — Completed: create, open and dispose a connection.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine($&quot;Before OpenAsync: {connection.State}&quot;);
+                await connection.OpenAsync();
+                Console.WriteLine($&quot;After OpenAsync: {connection.State}&quot;);
+            } // DisposeAsync runs here, including when the block exits by exception.
+
+            // TODO 02 — Completed: one value.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using var command = new SqlCommand(
+                    &quot;SELECT COUNT(*) FROM dbo.Students;&quot;, connection);
+                object? result = await command.ExecuteScalarAsync();
+                Console.WriteLine($&quot;Student count: {result}&quot;);
+            }
+
+            // TODO 03 — Read student rows.
+            // In a NEW short connection scope, run the supplied SELECT.
+            // Use ExecuteReaderAsync(), then while (await reader.ReadAsync()).
+            // Read column 0 as int and column 1 as string.
+            Console.WriteLine(&quot;TODO 03: student list is not implemented yet.&quot;);
+            // Input is collected AFTER earlier connection scopes have ended.
+            Console.Write(&quot;Enter a positive StudentId (try 1, 4, 99 or abc): &quot;);
+            string? input = Console.ReadLine();
+            if (!int.TryParse(input, out int studentId) || studentId &lt;= 0)
+            {
+                Console.WriteLine(&quot;Enter a valid positive integer. Lookup was not sent to SQL Server.&quot;);
+                return;
+            }
+            // TODO 04 — Find a student safely.
+            // studentId is already validated above. Open a NEW short connection.
+            // Use WHERE StudentId = @studentId and a typed SqlDbType.Int parameter.
+            // Read the matching row or print Student not found.
+            Console.WriteLine(&quot;TODO 04: student lookup is not implemented yet.&quot;);
+
+            // TODO 05 — Guided extension: read student enrollments.
+            // Reuse studentId in a NEW short connection scope.
+            // Use the supplied INNER JOIN, a typed parameter and a reader loop.
+            // If no rows are returned, print No enrollments found for this ID.
+            Console.WriteLine(&quot;TODO 05: enrollment report is not implemented yet.&quot;);
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine($&quot;SQL Server error {ex.Number}: {ex.Message}&quot;);
+                Console.WriteLine("Check the server connection, database setup and SQL command.");
+
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($&quot;Check the connection string: {ex.Message}&quot;);
+        }
+</code></pre>
+                        </div><a class="s2-btn small" href="downloads/Program-Checkpoint-02.cs" download>Download
+                            checkpoint 02</a>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="6" aria-labelledby="t6" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 07 / 10 · 15 minutes</span>
+                        <h1 id="t6" tabindex="-1">Read student rows</h1>
+                        <p class="intro-line">Business question: which students are registered? This result has rows and
+                            columns.</p>
+                    </div>
+                    <div class="todo-banner"><span class="todo-number">TODO 03</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>Replace the TODO 03 placeholder. Keep the reader inside the connection scope.</p>
+                        </div>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>SQL · expected result: four rows, two columns</span><button
+                                class="copy-btn" type="button">Copy code</button></div>
+                        <pre><code>SELECT StudentId, FullName
+FROM dbo.Students
+ORDER BY StudentId;</code></pre>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · replacement block</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>            // TODO 03 — Completed: multiple rows.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students ORDER BY StudentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                await using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    int id = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    Console.WriteLine($&quot;{id}: {name}&quot;);
+                }
+            } // Reader is disposed before connection (reverse declaration order).</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>const string sql</dt>
+                        <dd>Stores the fixed SQL text. Its SELECT order determines the column ordinals used below.</dd>
+                        <dt>await command.ExecuteReaderAsync()</dt>
+                        <dd>Executes the query and gives a SqlDataReader for its result.</dd>
+                        <dt>await using var reader</dt>
+                        <dd>Ensures the reader is disposed before the enclosing connection.</dd>
+                        <dt>while (await reader.ReadAsync())</dt>
+                        <dd>Moves to the next row. true means a row is available; false ends the loop. The reader starts
+                            before the first row.</dd>
+                        <dt>reader.GetInt32(0)</dt>
+                        <dd>Reads the first selected column, StudentId, as an integer. Column ordinals are zero based.
+                        </dd>
+                        <dt>reader.GetString(1)</dt>
+                        <dd>Reads the second selected column, FullName, as a string. These supplied columns are NOT
+                            NULL.</dd>
+                        <dt>Inside the loop</dt>
+                        <dd>Map the current row’s values to C# variables, then print them. ReadAsync advances; typed
+                            getters read values from that current row.</dd>
+                    </dl>
+
+                    <div class="s2-card">
+                        <h3>How do I choose the correct getter?</h3>
+
+                        <p>
+                            Check the column types in SSMS before choosing a reader method.
+                            The getter must match the SQL type returned by the query:
+                        </p>
+
+                        <ul>
+                            <li><code>int</code> → <code>GetInt32()</code></li>
+                            <li><code>bigint</code> → <code>GetInt64()</code></li>
+                            <li><code>nvarchar</code> or <code>varchar</code> → <code>GetString()</code></li>
+                            <li><code>decimal</code> → <code>GetDecimal()</code></li>
+                        </ul>
+
+                        <p>
+                            These getters do not automatically convert between types.
+                            Using the wrong getter can cause an
+                            <code>InvalidCastException</code>.
+                        </p>
+
+
+                        <h4>What if I do not know the type yet?</h4>
+
+                        <p>
+                            <code>GetValue()</code> retrieves the value as an
+                            <code>object</code>, without choosing a typed getter:
+                        </p>
+
+                        <pre><code>object value = reader.GetValue(0);
+Console.WriteLine(value);</code></pre>
+
+                        <p>
+                            For this lab, we know the column types, so use
+                            <code>GetInt32()</code> for StudentId and
+                            <code>GetString()</code> for FullName.
+                        </p>
+                    </div>
+
+                    <div class="sim-box"><span class="sim-label">Reader simulation · fixed starter data</span>
+                        <h3>Move the cursor before reading values</h3>
+                        <p class="read-status" id="readerStatus" aria-live="polite">Before first row · no current values
+                        </p>
+                        <div id="readerTable"></div>
+                        <div class="actions"><button class="s2-btn primary" id="readerNext">Call
+                                ReadAsync()</button><button class="s2-btn" id="readerReset">Reset reader</button></div>
+                        <div class="terminal" id="readerOutput" role="status">Call ReadAsync() to advance to the first
+                            row.</div>
+                    </div>
+                    <div class="proof">
+                        <h3>Predict → run → explain</h3>
+                        <p>Run the application. Expect <code>1: Lina</code>, <code>2: Omar</code>, <code>3: Reem</code>,
+                            <code>4: Sara</code>. Explain what would go wrong if you tried to access a value before the
+                            first successful ReadAsync call.
+                        </p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Full runnable checkpoint 03 · Program.cs</summary>
+                        <p>Use this for comparison after your attempt. This complete file includes later TODO
+                            placeholders. If replacing your file, keep your own server configuration in TODO 00.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · complete Program.cs</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+  
+        Console.WriteLine(&quot;DB3 — From SQL Queries to C# Results&quot;);
+
+        // TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+        // This example uses Windows authentication; ask your instructor if yours differs.
+        // TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+        // It bypasses certificate validation; do not copy it into a production app.
+        string connectionString =
+            @&quot;Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;&quot;;
+
+        try
+        {
+            // TODO 01 — Completed: create, open and dispose a connection.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine($&quot;Before OpenAsync: {connection.State}&quot;);
+                await connection.OpenAsync();
+                Console.WriteLine($&quot;After OpenAsync: {connection.State}&quot;);
+            } // DisposeAsync runs here, including when the block exits by exception.
+
+            // TODO 02 — Completed: one value.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using var command = new SqlCommand(
+                    &quot;SELECT COUNT(*) FROM dbo.Students;&quot;, connection);
+                object? result = await command.ExecuteScalarAsync();
+                Console.WriteLine($&quot;Student count: {result}&quot;);
+            }
+
+            // TODO 03 — Completed: multiple rows.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students ORDER BY StudentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                await using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    int id = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    Console.WriteLine($&quot;{id}: {name}&quot;);
+                }
+            } // Reader is disposed before connection (reverse declaration order).
+            // Input is collected AFTER earlier connection scopes have ended.
+            Console.Write(&quot;Enter a positive StudentId (try 1, 4, 99 or abc): &quot;);
+            string? input = Console.ReadLine();
+            if (!int.TryParse(input, out int studentId) || studentId &lt;= 0)
+            {
+                Console.WriteLine(&quot;Enter a valid positive integer. Lookup was not sent to SQL Server.&quot;);
+                return;
+            }
+            // TODO 04 — Find a student safely.
+            // studentId is already validated above. Open a NEW short connection.
+            // Use WHERE StudentId = @studentId and a typed SqlDbType.Int parameter.
+            // Read the matching row or print Student not found.
+            Console.WriteLine(&quot;TODO 04: student lookup is not implemented yet.&quot;);
+
+            // TODO 05 — Guided extension: read student enrollments.
+            // Reuse studentId in a NEW short connection scope.
+            // Use the supplied INNER JOIN, a typed parameter and a reader loop.
+            // If no rows are returned, print No enrollments found for this ID.
+            Console.WriteLine(&quot;TODO 05: enrollment report is not implemented yet.&quot;);
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine($&quot;SQL Server error {ex.Number}: {ex.Message}&quot;);
+            Console.WriteLine("Check the server connection, database setup and SQL command.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($&quot;Check the connection string: {ex.Message}&quot;);
+        }
+</code></pre>
+                        </div><a class="s2-btn small" href="downloads/Program-Checkpoint-03.cs" download>Download
+                            checkpoint 03</a>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="7" aria-labelledby="t7" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 08 / 10 · 20 minutes</span>
+                        <h1 id="t7" tabindex="-1">Find a student safely</h1>
+                        <p class="intro-line">Business question: who is the student with this ID? Keep SQL text fixed
+                            and send the value separately.</p>
+                    </div>
+                    <div class="todo-banner"><span class="todo-number">TODO 04</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>The supplied int.TryParse input scaffold is already in place. Replace only the TODO 04
+                                placeholder with the lookup block.</p>
+                        </div>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · existing input scaffold, explained</span><button
+                                class="copy-btn" type="button">Copy code</button></div>
+                        <pre><code>Console.Write(&quot;Enter a positive StudentId: &quot;);
+string? input = Console.ReadLine();
+if (!int.TryParse(input, out int studentId) || studentId &lt;= 0)
+{
+    Console.WriteLine(&quot;Enter a valid positive integer. Lookup was not sent to SQL Server.&quot;);
+    return;
+}</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>string? input</dt>
+                        <dd>Console input is text; ReadLine can return null if no input is available.</dd>
+                        <dt>int.TryParse(..., out int studentId)</dt>
+                        <dd>Attempts to turn the input into an Int32. It returns true on success and supplies the parsed
+                            number.</dd>
+                        <dt>! ... || studentId &lt;= 0</dt>
+                        <dd>Rejects unsuccessful conversion or a non-positive ID.</dd>
+                        <dt>return</dt>
+                        <dd>Exits Main before opening a lookup connection. Earlier tasks may already have queried the
+                            database.</dd>
+                    </dl>
+                    <div class="code-shell">
+                        <div class="code-head"><span>SQL · parameterized single-table lookup</span><button
+                                class="copy-btn" type="button">Copy code</button></div>
+                        <pre><code>SELECT StudentId, FullName
+FROM dbo.Students
+WHERE StudentId = @studentId;</code></pre>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>C# · replacement block</span><button class="copy-btn"
+                                type="button">Copy code</button></div>
+                        <pre><code>            // TODO 04 — Completed: typed parameter and single-row lookup.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students WHERE StudentId = @studentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(&quot;@studentId&quot;, SqlDbType.Int).Value = studentId;
+                await using var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    Console.WriteLine($&quot;Student: {reader.GetInt32(0)} — {reader.GetString(1)}&quot;);
+                }
+                else
+                {
+                    Console.WriteLine(&quot;Student not found.&quot;);
+                }
+            }</code></pre>
+                    </div>
+                    <dl class="explanation">
+                        <dt>@studentId in SQL</dt>
+                        <dd>A named value placeholder. Keep its spelling consistent in the SQL and parameter collection.
+                        </dd>
+                        <dt>command.Parameters.Add(...)</dt>
+                        <dd>Adds a parameter owned by this command.</dd>
+                        <dt>SqlDbType.Int</dt>
+                        <dd>Specifies SQL Server’s integer type explicitly. SqlDbType comes from System.Data.</dd>
+                        <dt>.Value = studentId</dt>
+                        <dd>Sends the validated C# integer as data separately from the SQL text.</dd>
+                        <dt>if (await reader.ReadAsync())</dt>
+                        <dd>A primary key matches at most one row, so one successful read is sufficient.</dd>
+                        <dt>else</dt>
+                        <dd>Handles a valid ID with no matching student. This is different from invalid text or a server
+                            error.</dd>
+                    </dl>
+                    <div class="s2-note"><strong>Why not concatenate input?</strong>
+                        <p>Concatenation mixes values into SQL syntax. Typed parameters keep the instruction and input
+                            separate. They do not replace table or column names. Validation checks that input fits the
+                            application’s rules; parameters control how that value is supplied to SQL Server.</p>
+                    </div>
+                    <div class="sim-box"><span class="sim-label">Lookup simulation · no database connection</span>
+                        <h3>Test the four cases</h3><label class="inline-label" for="lookupInput">Student
+                            ID</label><input class="s2-input" id="lookupInput" value="1" inputmode="numeric">
+                        <div class="actions"><button class="s2-btn primary" id="lookupRun">Trace the
+                                lookup</button><button class="s2-btn small" data-lookup-value="1">1 ·
+                                Lina</button><button class="s2-btn small" data-lookup-value="4">4 · Sara</button><button
+                                class="s2-btn small" data-lookup-value="99">99 · Missing</button><button
+                                class="s2-btn small" data-lookup-value="abc">abc · Invalid</button></div>
+                        <div class="terminal" id="lookupOutput" role="status">Choose an input and trace the lookup.
+                        </div>
+                    </div>
+                    <div class="s2-table-wrap">
+                        <table class="s2-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Input</th>
+                                    <th scope="col">Expected outcome</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Student: 1 — Lina</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Student: 4 — Sara</td>
+                                </tr>
+                                <tr>
+                                    <td>99</td>
+                                    <td>Student not found.</td>
+                                </tr>
+                                <tr>
+                                    <td>abc</td>
+                                    <td>Validation message; lookup command is not executed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="proof">
+                        <h3>Predict → run → explain</h3>
+                        <p>Run the real application four times using the test cases above. Add a comment explaining the
+                            parameter’s name, type and value. Explain why validating input does not replace
+                            parameterization.</p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Full runnable checkpoint 04 · Program.cs</summary>
+                        <p>Use this for comparison after your attempt. This complete file includes later TODO
+                            placeholders. If replacing your file, keep your own server configuration in TODO 00.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · complete Program.cs</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+
+        Console.WriteLine(&quot;DB3 — From SQL Queries to C# Results&quot;);
+
+        // TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+        // This example uses Windows authentication; ask your instructor if yours differs.
+        // TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+        // It bypasses certificate validation; do not copy it into a production app.
+        string connectionString =
+            @&quot;Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;&quot;;
+
+        try
+        {
+            // TODO 01 — Completed: create, open and dispose a connection.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine($&quot;Before OpenAsync: {connection.State}&quot;);
+                await connection.OpenAsync();
+                Console.WriteLine($&quot;After OpenAsync: {connection.State}&quot;);
+            } // DisposeAsync runs here, including when the block exits by exception.
+
+            // TODO 02 — Completed: one value.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using var command = new SqlCommand(
+                    &quot;SELECT COUNT(*) FROM dbo.Students;&quot;, connection);
+                object? result = await command.ExecuteScalarAsync();
+                Console.WriteLine($&quot;Student count: {result}&quot;);
+            }
+
+            // TODO 03 — Completed: multiple rows.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students ORDER BY StudentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                await using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    int id = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    Console.WriteLine($&quot;{id}: {name}&quot;);
+                }
+            } // Reader is disposed before connection (reverse declaration order).
+            // Input is collected AFTER earlier connection scopes have ended.
+            Console.Write(&quot;Enter a positive StudentId (try 1, 4, 99 or abc): &quot;);
+            string? input = Console.ReadLine();
+            if (!int.TryParse(input, out int studentId) || studentId &lt;= 0)
+            {
+                Console.WriteLine(&quot;Enter a valid positive integer. Lookup was not sent to SQL Server.&quot;);
+                return;
+            }
+            // TODO 04 — Completed: typed parameter and single-row lookup.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students WHERE StudentId = @studentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(&quot;@studentId&quot;, SqlDbType.Int).Value = studentId;
+                await using var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    Console.WriteLine($&quot;Student: {reader.GetInt32(0)} — {reader.GetString(1)}&quot;);
+                }
+                else
+                {
+                    Console.WriteLine(&quot;Student not found.&quot;);
+                }
+            }
+
+            // TODO 05 — Guided extension: read student enrollments.
+            // Reuse studentId in a NEW short connection scope.
+            // Use the supplied INNER JOIN, a typed parameter and a reader loop.
+            // If no rows are returned, print No enrollments found for this ID.
+            Console.WriteLine(&quot;TODO 05: enrollment report is not implemented yet.&quot;);
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine($&quot;SQL Server error {ex.Number}: {ex.Message}&quot;);
+            Console.WriteLine("Check the server connection, database setup and SQL command.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($&quot;Check the connection string: {ex.Message}&quot;);
+        }
+
+</code></pre>
+                        </div><a class="s2-btn small" href="downloads/Program-Checkpoint-04.cs" download>Download
+                            checkpoint 04</a>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="8" aria-labelledby="t8" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 09 / 10 · 10 minutes</span>
+                        <h1 id="t8" tabindex="-1">Guided enrollment report</h1>
+                        <p class="intro-line">Use the same command, parameter and reader pattern. Change the SQL and the
+                            selected columns.</p>
+                    </div><span class="tag">GUIDED EXTENSION · INSTRUCTOR WALKTHROUGH IF TIME IS SHORT</span>
+                    <div class="todo-banner"><span class="todo-number">TODO 05</span>
+                        <div><strong>In your prepared Program.cs</strong>
+                            <p>After completing the core single-table lookup, replace the TODO 05 placeholder. Reuse the
+                                validated studentId; do not create a connection per table.</p>
+                        </div>
+                    </div>
+                    <div class="code-shell">
+                        <div class="code-head"><span>SQL · one command, three joined tables</span><button
+                                class="copy-btn" type="button">Copy code</button></div>
+                        <pre><code>SELECT s.StudentId, s.FullName, c.CourseName, c.CreditHours
+FROM dbo.Students AS s
+INNER JOIN dbo.Enrollments AS e ON e.StudentId = s.StudentId
+INNER JOIN dbo.Courses AS c ON c.CourseId = e.CourseId
+WHERE s.StudentId = @studentId
+ORDER BY c.CourseId;</code></pre>
+                    </div>
+                    <p>Start with a student, match their enrollment rows, then match each enrollment’s course. The
+                        aliases <code>s</code>, <code>e</code> and <code>c</code> keep column references readable. Each
+                        result row represents <strong>one enrollment</strong>.</p>
+                    <div class="s2-table-wrap">
+                        <table class="s2-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">StudentId</th>
+                                    <th scope="col">FullName</th>
+                                    <th scope="col">CourseName</th>
+                                    <th scope="col">CreditHours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Lina</td>
+                                    <td>Database Management</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Lina</td>
+                                    <td>Web Development</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="s2-note"><strong>A repeated name is expected</strong>
+                        <p>Lina appears twice because she has two enrollments. This is one result set from one command,
+                            not a request for a new connection to each table.</p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Reveal the C# adaptation after tracing the SQL</summary>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · replacement block</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>            // TODO 05 — Completed: enrollment report (guided extension).
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;&quot;&quot;
+                    SELECT s.StudentId, s.FullName, c.CourseName, c.CreditHours
+                    FROM dbo.Students AS s
+                    INNER JOIN dbo.Enrollments AS e ON e.StudentId = s.StudentId
+                    INNER JOIN dbo.Courses AS c ON c.CourseId = e.CourseId
+                    WHERE s.StudentId = @studentId
+                    ORDER BY c.CourseId;
+                    &quot;&quot;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(&quot;@studentId&quot;, SqlDbType.Int).Value = studentId;
+                await using var reader = await command.ExecuteReaderAsync();
+                bool found = false;
+                while (await reader.ReadAsync())
+                {
+                    found = true;
+                    Console.WriteLine($&quot;{reader.GetInt32(0)} — {reader.GetString(1)} / {reader.GetString(2)} / {reader.GetInt32(3)}&quot;);
+                }
+                if (!found)
+                    Console.WriteLine(&quot;No enrollments found for this ID.&quot;);
+            }</code></pre>
+                        </div>
+                        <dl class="explanation">
+                            <dt>Selected columns 0–3</dt>
+                            <dd>StudentId → int, FullName → string, CourseName → string, CreditHours → int.</dd>
+                            <dt>bool found = false</dt>
+                            <dd>Tracks whether at least one enrollment row was read.</dd>
+                            <dt>found = true</dt>
+                            <dd>Runs only inside a successful reader iteration.</dd>
+                            <dt>if (!found)</dt>
+                            <dd>Reports zero enrollment rows without claiming the student does not exist.</dd>
+                        </dl>
+                    </details>
+                    <div class="sim-box"><span class="sim-label">Report simulation · fixed starter data</span>
+                        <h3>What does this ID mean in each query?</h3><label class="inline-label"
+                            for="joinInput">Student ID</label><select class="s2-input" id="joinInput">
+                            <option value="1">1 · Lina</option>
+                            <option value="4">4 · Sara</option>
+                            <option value="99">99 · Missing ID</option>
+                        </select>
+                        <div id="joinResult" aria-live="polite"></div>
+                    </div>
+                    <div class="proof">
+                        <h3>Predict → run → explain</h3>
+                        <p>For ID 1, explain both enrollment rows. For ID 4, compare the earlier student lookup with
+                            this INNER JOIN: Sara exists, but the report has no enrollments. For ID 99, both queries
+                            have no rows, for different reasons.</p>
+                    </div>
+                    <details class="s2-details">
+                        <summary>Full runnable checkpoint 05 · Program.cs</summary>
+                        <p>Use this for comparison after your attempt. This complete file includes later TODO
+                            placeholders. If replacing your file, keep your own server configuration in TODO 00.</p>
+                        <div class="code-shell">
+                            <div class="code-head"><span>C# · complete Program.cs</span><button class="copy-btn"
+                                    type="button">Copy code</button></div>
+                            <pre><code>using System.Data;
+using Microsoft.Data.SqlClient;
+
+
+        Console.WriteLine(&quot;DB3 — From SQL Queries to C# Results&quot;);
+
+        // TODO 00 — Replace YOUR_SERVER using the server name shown in SSMS.
+        // This example uses Windows authentication; ask your instructor if yours differs.
+        // TrustServerCertificate=True is for this LOCAL classroom SQL Server only.
+        // It bypasses certificate validation; do not copy it into a production app.
+        string connectionString =
+            @&quot;Server=YOUR_SERVER;Database=TVET_DBM_Lab01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=10;&quot;;
+
+        try
+        {
+            // TODO 01 — Completed: create, open and dispose a connection.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                Console.WriteLine($&quot;Before OpenAsync: {connection.State}&quot;);
+                await connection.OpenAsync();
+                Console.WriteLine($&quot;After OpenAsync: {connection.State}&quot;);
+            } // DisposeAsync runs here, including when the block exits by exception.
+
+            // TODO 02 — Completed: one value.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using var command = new SqlCommand(
+                    &quot;SELECT COUNT(*) FROM dbo.Students;&quot;, connection);
+                object? result = await command.ExecuteScalarAsync();
+                Console.WriteLine($&quot;Student count: {result}&quot;);
+            }
+
+            // TODO 03 — Completed: multiple rows.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students ORDER BY StudentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                await using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    int id = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    Console.WriteLine($&quot;{id}: {name}&quot;);
+                }
+            } // Reader is disposed before connection (reverse declaration order).
+            // Input is collected AFTER earlier connection scopes have ended.
+            Console.Write(&quot;Enter a positive StudentId (try 1, 4, 99 or abc): &quot;);
+            string? input = Console.ReadLine();
+            if (!int.TryParse(input, out int studentId) || studentId &lt;= 0)
+            {
+                Console.WriteLine(&quot;Enter a valid positive integer. Lookup was not sent to SQL Server.&quot;);
+                return;
+            }
+            // TODO 04 — Completed: typed parameter and single-row lookup.
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;SELECT StudentId, FullName FROM dbo.Students WHERE StudentId = @studentId;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(&quot;@studentId&quot;, SqlDbType.Int).Value = studentId;
+                await using var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    Console.WriteLine($&quot;Student: {reader.GetInt32(0)} — {reader.GetString(1)}&quot;);
+                }
+                else
+                {
+                    Console.WriteLine(&quot;Student not found.&quot;);
+                }
+            }
+
+            // TODO 05 — Completed: enrollment report (guided extension).
+            await using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                const string sql = &quot;&quot;&quot;
+                    SELECT s.StudentId, s.FullName, c.CourseName, c.CreditHours
+                    FROM dbo.Students AS s
+                    INNER JOIN dbo.Enrollments AS e ON e.StudentId = s.StudentId
+                    INNER JOIN dbo.Courses AS c ON c.CourseId = e.CourseId
+                    WHERE s.StudentId = @studentId
+                    ORDER BY c.CourseId;
+                    &quot;&quot;&quot;;
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(&quot;@studentId&quot;, SqlDbType.Int).Value = studentId;
+                await using var reader = await command.ExecuteReaderAsync();
+                bool found = false;
+                while (await reader.ReadAsync())
+                {
+                    found = true;
+                    Console.WriteLine($&quot;{reader.GetInt32(0)} — {reader.GetString(1)} / {reader.GetString(2)} / {reader.GetInt32(3)}&quot;);
+                }
+                if (!found)
+                    Console.WriteLine(&quot;No enrollments found for this ID.&quot;);
+            }
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine($&quot;SQL Server error {ex.Number}: {ex.Message}&quot;);
+            Console.WriteLine("Check the server connection, database setup and SQL command.");
+
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($&quot;Check the connection string: {ex.Message}&quot;);
+        }
+</code></pre>
+                        </div><a class="s2-btn small" href="downloads/Program-Checkpoint-05.cs" download>Download
+                            checkpoint 05</a>
+                    </details>
+                </section>
+                <section class="lesson " data-panel="9" aria-labelledby="t9" hidden>
+                    <div class="panel-head"><span class="section-kicker">Step 10 / 10 · 5 minutes</span>
+                        <h1 id="t9" tabindex="-1">Review & what’s next</h1>
+                        <p class="intro-line">Show that you understand the code you completed, not just its output.</p>
+                    </div>
+                    <div class="s2-card">
+                        <h2>Review: classes we used</h2>
+
+                        <p>
+                            Recall where each class appeared in the application
+                            and explain its responsibility.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <code>SqlConnection</code> — represents the database
+                                connection. Creating the object prepares it;
+                                <code>OpenAsync()</code> opens it.
+                            </li>
+                            <li>
+                                <code>SqlCommand</code> — holds the SQL instruction
+                                and its connection. An execution method sends
+                                the command for execution.
+                            </li>
+                            <li>
+                                <code>SqlParameter</code> — supplies a typed value
+                                separately from the SQL text.
+                            </li>
+                            <li>
+                                <code>SqlDataReader</code> — reads result rows.
+                                <code>ReadAsync()</code> advances to the next row.
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="exitQuiz"></div>
+                    <div class="quiz-summary">
+                        <div><strong id="exitScore" aria-live="polite">0 of 5 checked</strong>
+                            <div class="muted">Use the explanations to revisit any uncertain steps.</div>
+                        </div><button class="s2-btn small" data-reset-quiz="exit">Try the review again</button>
+                    </div>
+
+                    <details class="s2-details" id="moreAdoClasses">
+                        <summary>More ADO.NET Classes — Optional Preview</summary>
+
+                        <p>
+                            The following classes extend the picture beyond
+                            the four classes used in this practical.
+                            You do not need to implement them in this lab.
+                        </p>
+
+                        <h3>SqlTransaction</h3>
+                        <p>
+                            Groups database operations into a transaction,
+                            allowing the changes to be committed together
+                            or rolled back.
+                        </p>
+
+                        <h3>What does “in-memory” mean?</h3>
+                        <p>
+                            An application can load data from a database
+                            and keep a copy in its own memory.
+                            It can then work with that copy without keeping
+                            the database connection open throughout that work.
+                        </p>
+
+                        <h3>DataTable and DataSet</h3>
+                        <p>
+                            <code>DataTable</code> holds rows and columns in memory.
+                            <code>DataSet</code> can contain several DataTable
+                            objects and relationships between them.
+                            Changes to these objects do not automatically
+                            update SQL Server.
+                        </p>
+
+                        <h3>SqlDataAdapter</h3>
+                        <p>
+                            Uses connections and commands to transfer data
+                            between a database and in-memory tables.
+                            Transferring changes back to the database
+                            requires database communication again.
+                        </p>
+
+                        <h3>See the complete picture</h3>
+                        <p>
+                            Explore the diagram to connect the classes
+                            you used with these additional components.
+                        </p>
+
+                        <section class="ado-map" id="ado-component-map" aria-labelledby="ado-map-heading">
+                            <span class="ado-map__eyebrow">Interactive architecture · Explore the ADO.NET classes</span>
+                            <div class="ado-map__header">
+                                <div>
+                                    <h3 id="ado-map-heading">How C# communicates with SQL Server</h3>
+                                    <p class="ado-map__intro">Reveal the class names one at a time to explore the
+                                        connected
+                                        and disconnected parts of ADO.NET. <strong>Today’s practical uses Connection,
+                                            Command, Parameter and Reader. The other four classes are optional
+                                            architecture
+                                            reference.</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="ado-map__controls">
+                                <button class="ado-map__btn" type="button" data-ado-next>Reveal next class →</button>
+                                <button class="ado-map__btn ado-map__btn--ghost" type="button" data-ado-all>Show
+                                    all</button>
+                                <button class="ado-map__btn ado-map__btn--ghost" type="button"
+                                    data-ado-reset>Reset</button>
+                                <div class="ado-map__count" role="status"><span data-ado-count>0 / 8</span><span
+                                        class="ado-map__track"><span class="ado-map__progress"
+                                            data-ado-progress></span></span></div>
+                            </div>
+
+                            <div class="ado-map__app">C# Console Application<small>Our program calls ADO.NET classes in
+                                    C#</small></div>
+                            <div class="ado-map__vertical-arrow" aria-hidden="true"></div>
+                            <div class="ado-map__provider">
+                                <div class="ado-map__provider-top"><span class="ado-map__provider-title">ADO.NET ·
+                                        Provider
+                                        + In-memory Components</span><span
+                                        class="ado-map__provider-tag">Microsoft.Data.SqlClient · System.Data</span>
+                                </div>
+                                <div class="ado-map__lanes">
+                                    <div class="ado-map__lane">
+                                        <div class="ado-map__lane-head"><span class="ado-map__lane-title">Connected
+                                                access</span><span class="ado-map__lane-caption">Uses a live connection
+                                                while accessing results</span></div>
+                                        <div class="ado-map__cards">
+                                            <button class="ado-map__node" type="button" data-ado-step="1"><span
+                                                    class="ado-map__node-num">01 ·
+                                                    CONNECT</span><br><code>SqlConnection</code><span
+                                                    class="ado-map__node-note">Opens the database connection <span
+                                                        class="ado-map__today">TODAY</span></span><span
+                                                    class="ado-map__locked">Reveal class 01</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="2"><span
+                                                    class="ado-map__node-num">02 ·
+                                                    COMMAND</span><br><code>SqlCommand</code><span
+                                                    class="ado-map__node-note">Runs SQL instructions <span
+                                                        class="ado-map__today">TODAY</span></span><span
+                                                    class="ado-map__locked">Reveal class 02</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="3"><span
+                                                    class="ado-map__node-num">03 ·
+                                                    VALUES</span><br><code>SqlParameter</code><span
+                                                    class="ado-map__node-note">Supplies typed parameter values <span
+                                                        class="ado-map__today">TODAY</span></span><span
+                                                    class="ado-map__locked">Reveal class 03</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="4"><span
+                                                    class="ado-map__node-num">04 ·
+                                                    ROWS</span><br><code>SqlDataReader</code><span
+                                                    class="ado-map__node-note">Reads result rows forward <span
+                                                        class="ado-map__today">TODAY</span></span><span
+                                                    class="ado-map__locked">Reveal class 04</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="5"><span
+                                                    class="ado-map__node-num">05 ·
+                                                    TRANSACTION</span><br><code>SqlTransaction</code><span
+                                                    class="ado-map__node-note">Groups changes as one unit <span
+                                                        class="ado-map__reference">REFERENCE</span></span><span
+                                                    class="ado-map__locked">Reveal class 05</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="ado-map__lane ado-map__lane--disconnected">
+                                        <div class="ado-map__lane-head"><span class="ado-map__lane-title">Disconnected
+                                                access</span><span class="ado-map__lane-caption">Work with data cached
+                                                in
+                                                memory</span></div>
+                                        <div class="ado-map__cards">
+                                            <button class="ado-map__node" type="button" data-ado-step="6"><span
+                                                    class="ado-map__node-num">06 ·
+                                                    BRIDGE</span><br><code>SqlDataAdapter</code><span
+                                                    class="ado-map__node-note">Transfers data using commands and
+                                                    connections
+                                                    <span class="ado-map__reference">REFERENCE</span></span><span
+                                                    class="ado-map__locked">Reveal class 06</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="7"><span
+                                                    class="ado-map__node-num">07 · MEMORY
+                                                    TABLE</span><br><code>DataTable</code><span
+                                                    class="ado-map__node-note">Stores rows and columns in memory <span
+                                                        class="ado-map__reference">REFERENCE</span></span><span
+                                                    class="ado-map__locked">Reveal class 07</span></button>
+                                            <button class="ado-map__node" type="button" data-ado-step="8"><span
+                                                    class="ado-map__node-num">08 · MEMORY
+                                                    COLLECTION</span><br><code>DataSet</code><span
+                                                    class="ado-map__node-note">Contains tables and relationships in
+                                                    memory
+                                                    <span class="ado-map__reference">REFERENCE</span></span><span
+                                                    class="ado-map__locked">Reveal class 08</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ado-map__vertical-arrow" aria-hidden="true"></div>
+                            <div class="ado-map__database">SQL Server Database <small>TVET_DBM_Lab01 · Students,
+                                    Courses,
+                                    Enrollments</small></div>
+                            <div class="ado-map__detail" data-ado-detail aria-live="polite"><strong>Ready to
+                                    explore.</strong> Select “Reveal next class” to uncover the ADO.NET components.
+                            </div>
+                            <p class="ado-map__footnote"><strong>Class vs. method:</strong> <code>SqlCommand</code> is a
+                                class; <code>ExecuteScalarAsync()</code> is one of its methods and returns a single
+                                result.
+                                <strong>Architecture note:</strong> <code>SqlDataAdapter</code> uses connections and
+                                commands to fill or update in-memory tables; <code>DataTable</code> and
+                                <code>DataSet</code>
+                                are not SQL Server provider classes.
+                            </p>
+                        </section>
+                        -->
+                    </details>
+                    <div class="s2-card" id="homework">
+                        <h2>Homework · Before Session 03</h2>
+
+                        <p>
+                            Keep your completed TODOs and add a course lookup
+                            to the same application.
+                        </p>
+
+                        <ol>
+                            <li>
+                                Ask for a positive CourseId.
+                                Reject invalid input before opening a connection.
+                            </li>
+                            <li>
+                                Use a typed <code>@courseId</code> parameter and join
+                                Students with Enrollments to display the IDs and names
+                                of students enrolled in that course.
+                            </li>
+                            <li>
+                                Read the results using
+                                <code>ExecuteReaderAsync()</code> and
+                                <code>ReadAsync()</code>.
+                                If there are no rows, display
+                                <strong>No enrollments found for this course ID.</strong>
+                            </li>
+                        </ol>
+
+                        <p>
+                            Test with <code>101</code>, <code>99</code> and
+                            <code>abc</code>. Use a short
+                            <code>await using</code> connection scope.
+                        </p>
+
+                        <h3>Submit one Program.cs file</h3>
+
+                        <p>
+                            Submit through the instructor’s Google Classroom activity
+                            before Session 03. Include your name in a comment,
+                            your completed TODOs and the course lookup.
+                            Add a short comment explaining each parameter’s
+                            name, SQL type and value.
+                        </p>
+
+                        <ul class="s2-checklist">
+                            <li>
+                                <label>
+                                    <input type="checkbox" data-check="lookup-tested">
+                                    My student lookup handles existing IDs,
+                                    missing IDs and invalid input.
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" data-check="course-tested">
+                                    I tested the course lookup with 101, 99 and abc.
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" data-check="parameter-explained">
+                                    I can explain the parameters used in both lookups.
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" data-check="lifetime-explained">
+                                    I can identify where the reader and connection
+                                    are disposed.
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="s2-note"><strong>Next · Session 03</strong>
+                        <p>Extend the same project with INSERT, UPDATE and DELETE using typed parameters and
+                            <code>ExecuteNonQueryAsync</code>. It returns an integer, often the affected-row count for
+                            simple DML; “NonQuery” does not mean “returns nothing”.
+                        </p>
+                    </div>
+                    <div class="completion-card" id="completionCard" hidden><span class="confetti"
+                            aria-hidden="true">✓</span><span class="section-kicker">Session 02 completed</span>
+                        <h2>Your SQL now has a C# route.</h2>
+                        <p>Keep your Program.cs. We’ll build on this work in Session 03.</p>
+                        <div class="actions"><button class="s2-btn" id="reviewSession">Review from the information
+                                check</button><button class="s2-btn primary" id="downloadProgress">Download my learning
+                                record</button></div>
+                    </div>
+                </section>
+                <section class="lesson" data-panel="sources" aria-labelledby="tSources" hidden>
+                    <div class="panel-head"><span class="section-kicker">Reference shelf</span>
+                        <h1 id="tSources" tabindex="-1">Sources & classroom files</h1>
+                        <p class="intro-line">Use the lesson first. Return here when you want the official API detail.
+                        </p>
+                    </div>
+                    <div class="s2-card">
+                        <h2>Lesson scope</h2>
+                        <p>Session 02 follows the Week 1 ADO.NET block in the supplied DBM training plan and continues
+                            after Session 01’s “Why learn ADO.NET before EF Core?”. The lesson blueprint sets the
+                            information check, fixed dataset and TODO progression. EF Core implementation, full CRUD,
+                            transactions and stored procedures belong to later sessions.</p>
+                    </div>
+                    <ul class="source-list">
+                        <li><a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/ado-net-overview"
+                                target="_blank" rel="noopener">Microsoft Learn · ADO.NET overview ↗</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/sql/connect/ado-net/introduction-microsoft-data-sqlclient-namespace"
+                                target="_blank" rel="noopener">Microsoft Learn · Microsoft.Data.SqlClient ↗</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/sql/connect/ado-net/connecting-to-data-source"
+                                target="_blank" rel="noopener">Microsoft Learn · Connecting to a data source ↗</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/sql/connect/ado-net/configure-parameters"
+                                target="_blank" rel="noopener">Microsoft Learn · Configuring parameters ↗</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/sql/connect/ado-net/sql-server-connection-pooling"
+                                target="_blank" rel="noopener">Microsoft Learn · Connection pooling ↗</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/sql/connect/ado-net/asynchronous-programming"
+                                target="_blank" rel="noopener">Microsoft Learn · Asynchronous programming ↗</a></li>
+                        <li><a href="https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.4" target="_blank"
+                                rel="noopener">NuGet · pinned SqlClient 6.1.4 package ↗</a></li>
+                    </ul>
+                    <div class="s2-card">
+                        <h2>Downloads</h2>
+                        <div class="actions"><a class="s2-btn primary"
+                                href="downloads/DB3_Session02_Student_Starter.zip" download>Student starter ZIP</a><a
+                                class="s2-btn" href="downloads/setup.sql" download>SQL setup</a><a class="s2-btn"
+                                href="downloads/START-HERE.md" download>Opening instructions</a></div>
+                        <p class="muted">The C# project and SQL script need instructor verification on the classroom’s
+                            SQL Server and Visual Studio environment. The browser interactions are simulations and do
+                            not execute SQL or C#.</p>
+                    </div><button class="s2-btn" id="returnLesson">← Return to lesson</button>
+                </section>
+                <footer class="site-footer" id="lessonFooter"><button class="s2-btn" id="previousStep">←
+                        Previous</button><small id="stepCounter">STEP 01 OF 10</small>
+                    <div class="actions"><button class="s2-btn" id="nextStep">Next →</button><button
+                            class="s2-btn primary" id="completeStep">Complete & continue →</button></div>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="toast" id="toast" role="status" hidden></div><noscript>
+        <div class="s2-note">Enable JavaScript to use lesson navigation and feedback. The downloaded starter and SQL
+            file can still be opened directly.</div>
+    </noscript>
+</body>
+
+</html>
