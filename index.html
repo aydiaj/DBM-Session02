@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/session02.css">
     <script defer src="js/app.js"></script>
+    <link rel="stylesheet" href="css/parameter-demo.css?v=20261111-s2-parameters1">
+    <script defer src="js/parameter-demo.js?v=20261111-s2-parameters1"></script>
 </head>
 
 <body><a class="skip-link" href="#content">Skip to learning content</a>
@@ -67,7 +69,8 @@
             </nav>
             <div class="sidebar-resources"><span>QUICK RESOURCES</span><a href="#sources" id="sourcesLink">↗ Sources &
                     downloads</a><a href="downloads/DB3_Session02_Student_Starter.zip" download>↓ Student starter
-                    project</a><a href="downloads/DB3_Session02_Homework.pdf" download>↓ Homework instructions</a><button id="resetProgress">↺ Reset this session</button></div>
+                    project</a><a href="downloads/DB3_Session02_Homework.pdf" download>↓ Homework instructions
+                    project</a><button id="resetProgress">↺ Reset this session</button></div>
             <div class="sidebar-foot">UNRWA Gaza Training Centre<br>Programming and Database Level 2</div>
         </aside>
         <div class="workspace">
@@ -1322,10 +1325,16 @@ WHERE StudentId = @studentId;</code></pre>
                         <dd>Handles a valid ID with no matching student. This is different from invalid text or a server
                             error.</dd>
                     </dl>
-                    <div class="s2-note"><strong>Why not concatenate input?</strong>
-                        <p>Concatenation mixes values into SQL syntax. Typed parameters keep the instruction and input
-                            separate. They do not replace table or column names. Validation checks that input fits the
-                            application’s rules; parameters control how that value is supplied to SQL Server.</p>
+                    <div class="s2-note">
+                        <img class="s2-note__mascot" src="images/db-mascot-teacher.webp" alt="" aria-hidden="true">
+                        <div class="s2-note__content">
+                            <strong>Why not concatenate input?</strong>
+                            <p>Concatenation mixes values into SQL syntax. Typed parameters keep the instruction and
+                                input
+                                separate. They do not replace table or column names. Validation checks that input fits
+                                the
+                                application’s rules; parameters control how that value is supplied to SQL Server.</p>
+                        </div>
                     </div>
                     <div class="sim-box"><span class="sim-label">Lookup simulation · no database connection</span>
                         <h3>Test the four cases</h3><label class="inline-label" for="lookupInput">Student
@@ -1471,6 +1480,108 @@ using Microsoft.Data.SqlClient;
                         </div><a class="s2-btn small" href="downloads/Program-Checkpoint-04.cs" download>Download
                             checkpoint 04</a>
                     </details>
+                    <div id="s2-parameter-explainer">
+                        <div class="s2-note parameter-note">
+                            <img src="images/db-mascot-teacher.webp" width="64" height="64" alt="" aria-hidden="true" />
+                            <div class="parameter-note-content">
+                                <strong>Why not join the variable directly into SQL?</strong>
+                                <p>
+                                    <span>Concatenation or string interpolation puts a value directly into the SQL text.
+                                        Parameters send values separately with their SQL types, keeping data separate
+                                        from
+                                        instructions. This handles ordinary apostrophes correctly and protects
+                                        against <strong>SQL injection</strong>, where input changes a command when it is
+                                        joined into the SQL text.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sim-box" aria-labelledby="s2ParamHeading">
+                            <span class="sim-label">SIMULATED DATABASE · compare before continuing</span>
+                            <h3 id="s2ParamHeading">Same student lookup. Two ways to send a name.</h3>
+                            <p>TODO 04 already rejects text through <code>int.TryParse</code>. Keep that ID lookup. This
+                                short name-based comparison makes quotes and SQL injection visible using the same four
+                                starter students.</p>
+                            <div class="parameter-cases" role="group" aria-label="Student-name examples">
+                                <button class="s2-btn small" type="button" data-s2-param-case="normal"
+                                    aria-pressed="true">1 · Ordinary name</button>
+                                <button class="s2-btn small" type="button" data-s2-param-case="apostrophe"
+                                    aria-pressed="false">2 · Name with an apostrophe</button>
+                                <button class="s2-btn small" type="button" data-s2-param-case="injection"
+                                    aria-pressed="false">3 · SQL injection attempt</button>
+                            </div>
+                            <label class="parameter-value" for="s2ParamValue">Value entered by the user
+                                <input id="s2ParamValue" value="Lina" readonly aria-describedby="s2ParamHelp" />
+                            </label>
+                            <p class="muted" id="s2ParamHelp">Select one of the three examples, inspect the SQL and
+                                predict both results. This comparison only reads the simulated database.</p>
+                            <div class="parameter-grid">
+                                <article class="parameter-path parameter-path--unsafe"
+                                    aria-labelledby="s2ParamConcatHeading">
+                                    <h4 id="s2ParamConcatHeading">Concatenated command</h4>
+                                    <p>The entered value becomes part of the SQL text.</p>
+                                    <div class="code-shell">
+                                        <div class="code-head"><span>SQL text built by concatenation</span></div>
+                                        <pre><code id="s2ParamConcatSql"></code></pre>
+                                    </div>
+                                    <div data-s2-param-result hidden>
+                                        <p class="feedback" id="s2ParamConcatOutcome"></p>
+                                        <div id="s2ParamConcatRows"></div>
+                                    </div>
+                                </article>
+                                <article class="parameter-path" aria-labelledby="s2ParamBoundHeading">
+                                    <h4 id="s2ParamBoundHeading">Parameterized command</h4>
+                                    <p>The instruction stays fixed. The value is supplied separately.</p>
+                                    <div class="code-shell">
+                                        <div class="code-head"><span>SQL text with a named parameter</span></div>
+                                        <pre><code id="s2ParamBoundSql"></code></pre>
+                                    </div>
+                                    <pre class="parameter-binding" id="s2ParamBinding"
+                                        aria-label="Separate parameter name, type and value"></pre>
+                                    <div data-s2-param-result hidden>
+                                        <p class="feedback" id="s2ParamBoundOutcome"></p>
+                                        <div id="s2ParamBoundRows"></div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="actions"><button class="s2-btn primary" id="s2ParamCompare"
+                                    type="button">Compare simulated results</button><button class="s2-btn"
+                                    id="s2ParamReset" type="button">Reset comparison</button></div>
+                            <p class="feedback" id="s2ParamSummary" role="status">Choose an example and predict both
+                                outcomes.</p>
+                            <details class="s2-details">
+                                <summary>How does the injection attempt change the SQL?</summary>
+                                <p>The first <code>'</code> ends the text value. <code>OR 1=1</code> adds a condition
+                                    that is always true, and <code>--</code> comments out the remaining quote. The
+                                    concatenated lookup now returns all four students. In a parameter, those characters
+                                    stay part of one name value.</p>
+                                <p><code>O'Brien</code> is an ordinary name with an apostrophe. It is not in the starter
+                                    data, so the parameterized lookup returns zero rows. That is a normal result, unlike
+                                    a syntax error.</p>
+                            </details>
+                        </div>
+                        <div class="s2-card">
+                            <h3>The variable is still used: assign it to the parameter</h3>
+                            <div class="code-shell">
+                                <div class="code-head"><span>C# · name-based example for comparison</span></div>
+                                <pre><code>string sql = "SELECT StudentId, FullName FROM dbo.Students WHERE FullName = @fullName;";
+using SqlCommand command = new SqlCommand(sql, connection);
+command.Parameters.Add("@fullName", SqlDbType.NVarChar, 80).Value = fullName;</code></pre>
+                            </div>
+                            <p>This fragment assumes an open connection and a C# string variable named
+                                <code>fullName</code>. <code>@fullName</code> identifies the SQL parameter;
+                                <code>NVarChar, 80</code> matches the column type and length;
+                                <code>.Value = fullName</code> supplies the C# value. Your completed TODO 04 continues
+                                to use <code>@studentId</code> and <code>SqlDbType.Int</code>.
+                            </p>
+                            <p class="muted">Validation checks application rules. Parameters keep values separate from
+                                SQL instructions. Keep both. Parameters represent values, not table names, column names
+                                or whole SQL conditions.</p>
+                            <p class="muted"><a
+                                    href="https://learn.microsoft.com/en-us/sql/connect/ado-net/configure-parameters"
+                                    target="_blank" rel="noopener">Microsoft Learn · Parameterized commands and SQL
+                                    injection protection ↗</a></p>
+                        </div>
+                    </div>
                 </section>
                 <section class="lesson " data-panel="8" aria-labelledby="t8" hidden>
                     <div class="panel-head"><span class="section-kicker">Step 09 / 10 · 10 minutes</span>
